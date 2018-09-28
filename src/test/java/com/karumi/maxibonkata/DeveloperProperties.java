@@ -24,7 +24,7 @@ public class DeveloperProperties {
     }
 
     @Property
-    public void theMaxibombsAreConfiguredInPositive(@From(PositiveNumberGenerator.class) int maxibombsToGrab) {
+    public void theMaxibombsAreConfiguredInPositive(@From(PositiveNumberGenerator2.class) int maxibombsToGrab) {
         Developer developer = new Developer(NAME, maxibombsToGrab);
 
         assertEquals(maxibombsToGrab, developer.getNumberOfMaxibonsToGrab());

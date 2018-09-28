@@ -20,13 +20,14 @@ import com.pholser.junit.quickcheck.generator.GenerationStatus;
 import com.pholser.junit.quickcheck.generator.Generator;
 import com.pholser.junit.quickcheck.random.SourceOfRandomness;
 
-public class PositiveNumberGenerator extends Generator<Integer> {
+public class PositiveNumberGenerator2 extends Generator<Integer> {
 
-  public PositiveNumberGenerator() {
+  public PositiveNumberGenerator2() {
     super(Integer.class);
   }
 
-  @Override public Integer generate(SourceOfRandomness random, GenerationStatus status) {
-    return random.nextInt(1, Integer.MAX_VALUE);
+  @Override public Integer generate(SourceOfRandomness random, GenerationStatus status)
+  {
+    return random.nextInt(0, Integer.MAX_VALUE);
   }
 }

@@ -29,7 +29,7 @@ public class HungryDevelopersGenerator extends Generator<Developer> {
 
   @Override public Developer generate(SourceOfRandomness random, GenerationStatus status) {
     String name = RandomStringUtils.randomAlphabetic(random.nextInt(16));
-//    int numberOfMaxibons = random.nextInt(8, 10);
-    return new Developer(name, 10);
+    int numberOfMaxibons = random.nextInt(8, 10);
+    return new Developer(name, numberOfMaxibons);
   }
 }
