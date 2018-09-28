@@ -19,17 +19,20 @@ package com.karumi.maxibonkata;
 import com.pholser.junit.quickcheck.generator.GenerationStatus;
 import com.pholser.junit.quickcheck.generator.Generator;
 import com.pholser.junit.quickcheck.random.SourceOfRandomness;
+
 import org.apache.commons.lang3.RandomStringUtils;
 
-public class HungryDevelopersGenerator extends Generator<Developer> {
+import java.util.List;
 
-  public HungryDevelopersGenerator() {
-    super(Developer.class);
+public class DevelopersListGenerator extends Generator<List<Developer>> {
+
+  protected DevelopersListGenerator(Class<List<Developer>> type) {
+    super(type);
   }
 
-  @Override public Developer generate(SourceOfRandomness random, GenerationStatus status) {
+  @Override public List<Developer> generate(SourceOfRandomness random, GenerationStatus status) {
     String name = RandomStringUtils.randomAlphabetic(random.nextInt(16));
-//    int numberOfMaxibons = random.nextInt(8, 10);
-    return new Developer(name, 10);
+    int numberOfMaxibons = random.nextInt(0, Integer.MAX_VALUE);
+    return new Developer(name, numberOfMaxibons);
   }
 }

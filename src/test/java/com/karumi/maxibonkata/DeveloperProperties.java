@@ -20,8 +20,6 @@ public class DeveloperProperties {
     public void theNameIsConfigured(String name) {
         Developer developer = new Developer(name, 1);
 
-        System.out.println(name);
-
         assertEquals(name, developer.getName());
     }
 
@@ -29,16 +27,12 @@ public class DeveloperProperties {
     public void theMaxibombsAreConfiguredInPositive(@From(PositiveNumberGenerator.class) int maxibombsToGrab) {
         Developer developer = new Developer(NAME, maxibombsToGrab);
 
-        System.out.println(maxibombsToGrab);
-
         assertEquals(maxibombsToGrab, developer.getNumberOfMaxibonsToGrab());
     }
 
     @Property
     public void theMaxibombsAreConfiguredInNegativeOrZero(@From(NegativeAndZeroNumberGenerator.class) int maxibombsToGrab) {
         Developer developer = new Developer(NAME, maxibombsToGrab);
-
-        System.out.println(maxibombsToGrab);
 
         assertEquals(0, developer.getNumberOfMaxibonsToGrab());
     }
