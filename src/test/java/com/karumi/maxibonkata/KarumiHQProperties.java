@@ -2,6 +2,7 @@ package com.karumi.maxibonkata;
 
 import static junit.framework.TestCase.assertTrue;
 
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -52,13 +53,31 @@ public class KarumiHQProperties {
     }
 
     @Property
-    public void messageSentWhenBuyMaxibombs(@From(HungryDevelopersGenerator.class) Developer developer) {
+    public void messageSentWhenNeedToBuyMaxibombs(@From(HungryDevelopersGenerator.class) Developer developer) {
         initHQ();
 
         karumiHQs.openFridge(developer);
 
         String messageToSent = "Hi guys, I'm " + developer.getName() + ". We need more maxibons!";
         verify(chat, times(1)).sendMessage(messageToSent);
+    }
+
+    @Property
+    public void messageNotSentWhenNoNeedToBuyMaxibombs(@From(NotHungryAtAllDevelopersGenerator.class) Developer developer) {
+        initHQ();
+
+        karumiHQs.openFridge(developer);
+
+        verify(chat, times(0)).sendMessage(anyString());
+    }
+
+    @Property
+    public void messageNotSentWhenNoNeedToBuyMaxibombsList(List<@From(NotHungryAtAllDevelopersGenerator.class) Developer> developers) {
+        initHQ();
+
+        karumiHQs.openFridge(developers);
+
+        verify(chat, times(0)).sendMessage(anyString());
     }
 
     private void initHQ() {
